@@ -1,4 +1,12 @@
 baseURL = 'https://davidbour.com/'
 locale = 'en-us'
 title = 'David Bour'
-theme = 'ananke'
+theme = 'PaperMod'
+
+[params]
+author = "David Bour"
+description = "My blog"
+
+[params.homeInfoParams]
+title = "Hi there 👋"
+content = "Welcome to my blog"
