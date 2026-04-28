@@ -1,6 +1,6 @@
 baseURL = '/'
 languageCode = 'en-us'
-title = "Programmer's Hagakure"
+title = "The Engineer's Hagakure"
 theme = 'PaperMod'
 
 [params]
