@@ -1,4 +1,0 @@
-name = "david-bour-blog"
-
-# Pages configuration - this tells Wrangler where to find your built site
-pages_build_output_dir = "public"
