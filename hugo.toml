@@ -1,4 +1,4 @@
-baseURL = 'https://davidbour.com/'
+baseURL = '/'
 locale = 'en-us'
 title = 'David Bour'
 theme = 'PaperMod'
