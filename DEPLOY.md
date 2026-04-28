@@ -1,39 +1,27 @@
-# Deploy Hugo to Cloudflare Pages with Workers
+# Deploy Hugo to Cloudflare Pages
 
-This project deploys your Hugo static site to Cloudflare Pages with a Worker for advanced routing and caching.
+This project deploys your Hugo static site to Cloudflare Pages via GitHub integration.
 
 ## Setup
 
-### 1. Install Dependencies
+### 1. Connect GitHub to Cloudflare Pages
 
-```bash
-npm install
-```
+1. Go to https://dash.cloudflare.com/
+2. Click **Pages** in the sidebar
+3. Click **Create a project** → **Connect to Git**
+4. Select **GitHub** and authorize Cloudflare
+5. Select `therealdavidbour/blog` repository
 
-### 2. Install Wrangler (if not already installed)
+### 2. Configure Build Settings
 
-```bash
-npm install -g wrangler@latest
-```
+When connecting your repo, set:
+- **Production branch**: `main`
+- **Build command**: `hugo`
+- **Build output directory**: `public`
 
-### 3. Authenticate with Cloudflare
+### 3. Deploy
 
-```bash
-wrangler login
-```
-
-### 4. Create/Link Project
-
-For a new Pages project:
-```bash
-wrangler pages project create david-bour-blog
-```
-
-To link to existing project:
-```bash
-wrangler pages project list
-# Then update your wrangler.toml with the project name
-```
+Click **Save and Deploy**. Cloudflare will automatically build and deploy.
 
 ## Development
 
@@ -44,7 +32,7 @@ npm run dev
 
 This starts Hugo in development mode at `http://localhost:1313`
 
-## Build
+## Building Locally
 
 Build the static site:
 ```bash
@@ -53,70 +41,40 @@ npm run build
 
 This generates the `public/` directory with your compiled Hugo site.
 
-## Deploy to Cloudflare Pages
+## Automatic Deployments
 
-### Option 1: Direct Deployment (Recommended)
+Every time you push to the `main` branch, Cloudflare Pages will:
+1. Pull your code
+2. Run `hugo` to build
+3. Deploy the `public/` folder
 
-Deploy your built site directly:
-```bash
-wrangler pages deploy public/
-```
-
-### Option 2: Git-based Deployment
-
-1. Push to GitHub
-2. Connect your repo in Cloudflare Pages dashboard
-3. Set build command: `hugo`
-4. Set output directory: `public`
-
-### Option 3: Deploy with Worker
-
-To deploy the Worker alongside your Pages:
-```bash
-wrangler deploy
-```
+View deployments: https://dash.cloudflare.com/ → **Pages** → **david-bour-blog**
 
 ## Configuration
 
-### Update `wrangler.toml`
-
-Replace placeholders:
-- `example.org` → your domain
-- KV namespace IDs in `[[kv_namespaces]]` section
-
-### Hugo Configuration
-
-Update `hugo.toml`:
+Update `hugo.toml` with your actual domain:
 ```toml
 baseURL = 'https://yourdomain.com/'
 ```
 
+## Adding a Custom Domain
+
+1. Go to your Pages project in Cloudflare dashboard
+2. Click **Settings** → **Domains**
+3. Add your custom domain
+4. Update DNS records if needed
+
 ## Features
 
 - **Static Site Generation**: Hugo builds your content to HTML
-- **Worker Middleware**: Custom routing, caching headers, redirects
-- **KV Storage**: Optional asset caching for improved performance
-- **Environment Support**: Separate prod/staging environments
-
-## Caching Strategy
-
-The Worker applies cache headers:
-- HTML files: 1 hour cache
-- Static assets: 1 year cache (immutable)
-
-Customize in `src/index.ts`
+- **Automatic Builds**: Deploys on every push to `main`
+- **Global CDN**: Content served from Cloudflare edge worldwide
+- **HTTPS**: Automatic SSL/TLS certificates
+- **Preview Deployments**: Each pull request gets a preview URL
 
 ## Monitoring
 
-View deployment logs:
-```bash
-wrangler tail
-```
-
-View Pages deployments:
-```bash
-wrangler pages project view david-bour-blog
-```
+View deployments and logs: https://dash.cloudflare.com/ → **Pages** → **david-bour-blog** → **Deployments**
 
 ## Resources
 
