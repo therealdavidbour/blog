@@ -1,9 +1,0 @@
-{
-  "name": "david-bour-blog",
-  "version": "1.0.0",
-  "description": "Hugo blog deployed to Cloudflare Pages",
-  "scripts": {
-    "build": "hugo",
-    "dev": "hugo server -D"
-  }
-}

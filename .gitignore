@@ -1,11 +1,8 @@
-node_modules/
-dist/
 public/
 .DS_Store
 *.swp
 *.swo
 .env
-.wrangler/
-.vercel/
 .cache/
 resources/_gen/
+.hugo_build.lock
