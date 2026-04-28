@@ -1,6 +1,6 @@
 baseURL = '/'
 languageCode = 'en-us'
-title = 'Hello 👋! I'm David Bour'
+title = "Hello 👋! I'm David Bour"
 theme = 'beautifulhugo'
 
 [params]
