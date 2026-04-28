@@ -14,3 +14,7 @@ theme = 'PaperMod'
 [[params.socialIcons]]
   name = "linkedin"
   url = "https://www.linkedin.com/in/david-bour/"
+
+[[params.socialIcons]]
+  name = "email"
+  url = "mailto:davidbourblog.autograph315@passinbox.com"
