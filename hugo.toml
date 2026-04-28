@@ -5,7 +5,6 @@ theme = 'beautifulhugo'
 
 [params]
   subtitle = ""
-  logo = ""
   favicon = ""
   [params.author]
     name = "David Bour"
