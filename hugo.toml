@@ -3,6 +3,24 @@ languageCode = 'en-us'
 title = "An Engineer's Hagakure"
 theme = 'PaperMod'
 
+[outputs]
+  home = ['HTML', 'RSS', 'JSON']
+
+[[menus.main]]
+  name = "Archive"
+  url = "/archives/"
+  weight = 1
+
+[[menus.main]]
+  name = "Tags"
+  url = "/tags/"
+  weight = 2
+
+[[menus.main]]
+  name = "Search"
+  url = "/search/"
+  weight = 3
+
 [params]
   author = "David Bour"
   description = "David Bour's blog"
