@@ -1,0 +1,19 @@
+{
+  "name": "david-bour-blog",
+  "version": "1.0.0",
+  "description": "Hugo blog deployed to Cloudflare Pages with Workers",
+  "scripts": {
+    "build": "hugo",
+    "dev": "hugo server -D",
+    "preview": "hugo",
+    "deploy:pages": "npm run build && wrangler pages deploy public/",
+    "deploy:worker": "npm run build && wrangler deploy"
+  },
+  "dependencies": {
+    "@cloudflare/kv-asset-handler": "^0.3.3"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0",
+    "@cloudflare/workers-types": "^4.20250428.0"
+  }
+}

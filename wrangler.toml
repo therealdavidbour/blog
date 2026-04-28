@@ -1,0 +1,25 @@
+name = "david-bour-blog"
+type = "workers"
+main = "src/index.ts"
+compatibility_date = "2026-04-28"
+compatibility_flags = ["nodejs_compat"]
+
+# Cloudflare Pages output directory (Hugo builds here)
+pages_build_output_dir = "public"
+
+# Build configuration for Pages
+build = { command = "hugo", cwd = "." }
+
+# Environment-specific configuration
+[env.production]
+name = "david-bour-blog-prod"
+route = "example.org/*"
+
+[observability]
+enabled = true
+
+# KV namespace for static assets
+[[kv_namespaces]]
+binding = "__STATIC_CONTENT"
+id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+preview_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
