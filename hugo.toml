@@ -1,12 +1,12 @@
 baseURL = '/'
 languageCode = 'en-us'
-title = 'David Bour'
+title = 'Hello 👋! I'm David Bour'
 theme = 'beautifulhugo'
 
 [params]
-  subtitle = "Welcome to my blog"
+  subtitle = ""
   logo = ""
   favicon = ""
   [params.author]
     name = "David Bour"
-  description = "David Bour's blog"
+  description = "David Bour"
