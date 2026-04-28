@@ -13,6 +13,8 @@ Imagine a scenario where you have hundreds of users a day who are posting messag
 
 So what exactly is a blue-green deployment? It's a technique for delivering software where two identical instances of an application run simultaneously, but production traffic is only routed to one of them.
 
+![Blue-green deployment diagram](/images/k8s-blue-green-diagram.png)
+
 In our hypothetical scenario, we have the current social media application without the rating feature — version 1.0 (blue) — running live at `http://example.ganba.local`. We deploy the new version 2.0 (green), with the rating feature, at `http://internal.example.ganba.local` — a URL only accessible to teams on the local network. When the testing team validates the new version, the operations team switches traffic from blue to green. At that point, rolling back is as simple as switching back. Once the team is confident, the old resources can be safely removed.
 
 ## Implementation
@@ -209,6 +211,8 @@ kubectl patch service bg-switch-service -n bg-switch \
 ```
 
 Navigate to `http://example.ganba.local` and you're now on the green deployment. To roll back, patch it back to blue. No downtime, no drama.
+
+![Blue-green switch in action](/images/k8s-blue-green-switch.gif)
 
 ---
 
