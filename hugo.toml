@@ -5,8 +5,8 @@ theme = 'PaperMod'
 
 [params]
 author = "David Bour"
-description = "My blog"
+description = "David Bour"
 
 [params.homeInfoParams]
-title = "Hi there 👋"
-content = "Welcome to my blog"
+title = "Hey 👋. I'm David"
+content = ""
