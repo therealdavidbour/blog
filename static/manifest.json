@@ -1,0 +1,16 @@
+{
+  "name": "David Bour",
+  "short_name": "David Bour",
+  "description": "Contact David Bour",
+  "start_url": "/contacts/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/images/profile.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
