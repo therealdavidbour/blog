@@ -1,0 +1,54 @@
+{{- define "main" }}
+<div class="contacts-page">
+  <div class="contacts-card">
+    <img class="contacts-avatar" src="/images/profile.jpg" alt="{{ site.Params.author }}" />
+    <h1 class="contacts-name">{{ site.Params.author }}</h1>
+    {{- partial "social_icons.html" (dict) }}
+    <div class="contacts-qr">
+      <img src="/images/qrcode.png" alt="QR code for davidbour.com/contacts/" />
+      <p class="contacts-url">davidbour.com</p>
+    </div>
+  </div>
+</div>
+
+<style>
+.contacts-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  padding: 2rem;
+}
+.contacts-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+.contacts-avatar {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 30%;
+  border: 3px solid var(--border);
+}
+.contacts-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  border: none;
+}
+.contacts-qr img {
+  width: 200px;
+  height: 200px;
+  display: block;
+}
+.contacts-url {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0;
+}
+</style>
+{{- end }}

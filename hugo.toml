@@ -21,6 +21,11 @@ theme = 'PaperMod'
   url = "/search/"
   weight = 3
 
+[[menus.main]]
+  name = "Contacts"
+  url = "/contacts/"
+  weight = 4
+
 [params]
   author = "David Bour"
   description = "David Bour's blog"
