@@ -11,7 +11,7 @@
 </header>
 
 <div class="projects-grid">
-  {{- range sort hugo.Data.projects "weight" }}
+  {{- range sort site.Data.projects "weight" }}
   {{- $title := .title }}
   <a class="project-tile" href="{{ .url | relURL }}" aria-label="Open {{ $title }}">
     <span class="project-logo-wrap">
