@@ -1,0 +1,111 @@
+{{- define "extrahead" }}
+<link rel="manifest" href="/manifest.json">
+{{- end }}
+
+{{- define "main" }}
+<header class="page-header projects-header">
+  <h1>{{ .Title }}</h1>
+  {{- with .Description }}
+  <div class="post-description">{{ . }}</div>
+  {{- end }}
+</header>
+
+<div class="projects-grid">
+  {{- range .Pages.ByWeight }}
+  {{- $project := . }}
+  <a class="project-tile" href="{{ .RelPermalink }}" aria-label="Open {{ .Title }}">
+    <span class="project-logo-wrap">
+      {{- with $project.Params.logo }}
+      <img class="project-logo" src="{{ . }}" alt="" loading="lazy" />
+      {{- else }}
+      <span class="project-logo project-logo-fallback">{{ substr $project.Title 0 1 }}</span>
+      {{- end }}
+    </span>
+    <span class="project-title">{{ .Title }}</span>
+    {{- with .Params.summary }}
+    <span class="project-summary">{{ . }}</span>
+    {{- end }}
+  </a>
+  {{- end }}
+</div>
+
+<style>
+.projects-header {
+  margin-bottom: 24px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 220px));
+  gap: 16px;
+}
+
+.project-tile {
+  display: flex;
+  aspect-ratio: 1 / 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--entry);
+  color: var(--primary);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 4%);
+  text-decoration: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.project-tile:hover,
+.project-tile:focus-visible {
+  border-color: var(--tertiary);
+  box-shadow: 0 10px 24px rgb(0 0 0 / 10%);
+  transform: translateY(-2px);
+}
+
+.project-logo-wrap {
+  display: grid;
+  width: 88px;
+  height: 88px;
+  place-items: center;
+}
+
+.project-logo {
+  width: 88px;
+  height: 88px;
+  object-fit: contain;
+}
+
+.project-logo-fallback {
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: var(--code-bg);
+  color: var(--secondary);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.project-title {
+  display: block;
+  margin-top: auto;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.project-summary {
+  display: block;
+  color: var(--secondary);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 520px) {
+  .projects-grid {
+    grid-template-columns: minmax(0, 220px);
+    justify-content: center;
+  }
+}
+</style>
+{{- end }}
