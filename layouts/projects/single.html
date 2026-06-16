@@ -1,0 +1,87 @@
+{{- define "extrahead" }}
+<link rel="manifest" href="/manifest.json">
+{{- end }}
+
+{{- define "main" }}
+{{- $appURL := .Params.external_url }}
+<article class="project-page">
+  <header class="post-header project-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+    {{- with .Description }}
+    <div class="post-description">{{ . }}</div>
+    {{- end }}
+  </header>
+
+  {{- with $appURL }}
+  <div class="project-actions">
+    <a class="project-open-link" href="{{ . }}" target="_blank" rel="noopener">Open full app</a>
+  </div>
+  <div class="project-frame-shell">
+    <iframe class="project-frame" src="{{ . }}" title="{{ $.Title }}" loading="eager"></iframe>
+  </div>
+  {{- end }}
+</article>
+
+<style>
+.project-page {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.project-header {
+  margin-bottom: 14px;
+}
+
+.project-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.project-open-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--entry);
+  color: var(--primary);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.project-open-link:hover,
+.project-open-link:focus-visible {
+  border-color: var(--tertiary);
+}
+
+.project-frame-shell {
+  width: 100%;
+  height: min(78vh, 900px);
+  min-height: 680px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.project-frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+}
+
+@media (max-width: 720px) {
+  .project-frame-shell {
+    width: calc(100vw - 24px);
+    min-height: 760px;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}
+</style>
+{{- end }}
