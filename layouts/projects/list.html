@@ -11,18 +11,18 @@
 </header>
 
 <div class="projects-grid">
-  {{- range .Pages.ByWeight }}
-  {{- $project := . }}
-  <a class="project-tile" href="{{ .RelPermalink }}" aria-label="Open {{ .Title }}">
+  {{- range sort hugo.Data.projects "weight" }}
+  {{- $title := .title }}
+  <a class="project-tile" href="{{ .url | relURL }}" aria-label="Open {{ $title }}">
     <span class="project-logo-wrap">
-      {{- with $project.Params.logo }}
-      <img class="project-logo" src="{{ . }}" alt="" loading="lazy" />
+      {{- with .logo }}
+      <img class="project-logo" src="{{ . | relURL }}" alt="" loading="lazy" />
       {{- else }}
-      <span class="project-logo project-logo-fallback">{{ substr $project.Title 0 1 }}</span>
+      <span class="project-logo project-logo-fallback">{{ substr $title 0 1 }}</span>
       {{- end }}
     </span>
-    <span class="project-title">{{ .Title }}</span>
-    {{- with .Params.summary }}
+    <span class="project-title">{{ $title }}</span>
+    {{- with .summary }}
     <span class="project-summary">{{ . }}</span>
     {{- end }}
   </a>
